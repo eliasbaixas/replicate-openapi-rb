@@ -10,6 +10,8 @@ info:
   title: Replicate HTTP API
   version: 1.0.0-a1
 openapi: 3.1.0
+security:
+  - TokenAuth: []
 paths:
   "/v1/collections":
     get:
@@ -1047,6 +1049,11 @@ paths:
 servers:
 - url: https://api.replicate.com/v1
 components:
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
   schemas:
     ApiResponse:
       type: object

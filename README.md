@@ -56,6 +56,14 @@ Please follow the [installation](#installation) procedure and then run the follo
 # Load the gem
 require 'replicate-openapi-rb'
 
+# Setup authorization
+Replicate.configure do |config|
+  # Configure API key authorization: TokenAuth
+  config.api_key['TokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['TokenAuth'] = 'Bearer'
+end
+
 api_instance = Replicate::DefaultApi.new
 collection_slug = 'collection_slug_example' # String | The slug of the collection, like `super-resolution` or `image-restoration`. See [replicate.com/collections](https://replicate.com/collections). 
 
@@ -106,5 +114,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Authorization
 
-Endpoints do not require authorization.
+
+Authentication schemes defined for the API:
+### TokenAuth
+
+
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
 

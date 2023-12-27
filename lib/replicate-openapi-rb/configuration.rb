@@ -234,6 +234,13 @@ module Replicate
     # Returns Auth Settings hash for api client.
     def auth_settings
       {
+        'TokenAuth' =>
+          {
+            type: 'api_key',
+            in: 'header',
+            key: 'Authorization',
+            value: api_key_with_prefix('TokenAuth')
+          },
       }
     end
 

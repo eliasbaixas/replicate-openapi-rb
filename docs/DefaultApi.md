@@ -36,6 +36,13 @@ Example cURL request:  ```console curl -s \\   -H \"Authorization: Token <paste-
 ```ruby
 require 'time'
 require 'replicate-openapi-rb'
+# setup authorization
+Replicate.configure do |config|
+  # Configure API key authorization: TokenAuth
+  config.api_key['TokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['TokenAuth'] = 'Bearer'
+end
 
 api_instance = Replicate::DefaultApi.new
 collection_slug = 'collection_slug_example' # String | The slug of the collection, like `super-resolution` or `image-restoration`. See [replicate.com/collections](https://replicate.com/collections). 
@@ -78,7 +85,7 @@ nil (empty response body)
 
 ### Authorization
 
-No authorization required
+[TokenAuth](../README.md#TokenAuth)
 
 ### HTTP request headers
 
@@ -99,6 +106,13 @@ Example cURL request:  ```console curl -s \\   -H \"Authorization: Token <paste-
 ```ruby
 require 'time'
 require 'replicate-openapi-rb'
+# setup authorization
+Replicate.configure do |config|
+  # Configure API key authorization: TokenAuth
+  config.api_key['TokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['TokenAuth'] = 'Bearer'
+end
 
 api_instance = Replicate::DefaultApi.new
 
@@ -138,7 +152,7 @@ nil (empty response body)
 
 ### Authorization
 
-No authorization required
+[TokenAuth](../README.md#TokenAuth)
 
 ### HTTP request headers
 
@@ -159,6 +173,13 @@ Example cURL request:  ```console curl -s \\   -H \"Authorization: Token <paste-
 ```ruby
 require 'time'
 require 'replicate-openapi-rb'
+# setup authorization
+Replicate.configure do |config|
+  # Configure API key authorization: TokenAuth
+  config.api_key['TokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['TokenAuth'] = 'Bearer'
+end
 
 api_instance = Replicate::DefaultApi.new
 
@@ -199,7 +220,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[TokenAuth](../README.md#TokenAuth)
 
 ### HTTP request headers
 
@@ -220,6 +241,13 @@ Create a model.  Example cURL request:  ```console curl -s -X POST \\   -H \"Aut
 ```ruby
 require 'time'
 require 'replicate-openapi-rb'
+# setup authorization
+Replicate.configure do |config|
+  # Configure API key authorization: TokenAuth
+  config.api_key['TokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['TokenAuth'] = 'Bearer'
+end
 
 api_instance = Replicate::DefaultApi.new
 models_create_request = Replicate::ModelsCreateRequest.new({hardware: 'hardware_example', name: 'name_example', owner: 'owner_example', visibility: 'public'}) # ModelsCreateRequest | 
@@ -262,7 +290,7 @@ nil (empty response body)
 
 ### Authorization
 
-No authorization required
+[TokenAuth](../README.md#TokenAuth)
 
 ### HTTP request headers
 
@@ -283,6 +311,13 @@ Example cURL request:  ```console curl -s \\   -H \"Authorization: Token <paste-
 ```ruby
 require 'time'
 require 'replicate-openapi-rb'
+# setup authorization
+Replicate.configure do |config|
+  # Configure API key authorization: TokenAuth
+  config.api_key['TokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['TokenAuth'] = 'Bearer'
+end
 
 api_instance = Replicate::DefaultApi.new
 model_owner = 'model_owner_example' # String | The name of the user or organization that owns the model. 
@@ -327,7 +362,7 @@ nil (empty response body)
 
 ### Authorization
 
-No authorization required
+[TokenAuth](../README.md#TokenAuth)
 
 ### HTTP request headers
 
@@ -348,6 +383,13 @@ Get a paginated list of public models.  Example cURL request:  ```console curl -
 ```ruby
 require 'time'
 require 'replicate-openapi-rb'
+# setup authorization
+Replicate.configure do |config|
+  # Configure API key authorization: TokenAuth
+  config.api_key['TokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['TokenAuth'] = 'Bearer'
+end
 
 api_instance = Replicate::DefaultApi.new
 
@@ -387,7 +429,7 @@ nil (empty response body)
 
 ### Authorization
 
-No authorization required
+[TokenAuth](../README.md#TokenAuth)
 
 ### HTTP request headers
 
@@ -408,6 +450,13 @@ Delete a model version and all associated predictions, including all output file
 ```ruby
 require 'time'
 require 'replicate-openapi-rb'
+# setup authorization
+Replicate.configure do |config|
+  # Configure API key authorization: TokenAuth
+  config.api_key['TokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['TokenAuth'] = 'Bearer'
+end
 
 api_instance = Replicate::DefaultApi.new
 model_owner = 'model_owner_example' # String | The name of the user or organization that owns the model. 
@@ -454,7 +503,7 @@ nil (empty response body)
 
 ### Authorization
 
-No authorization required
+[TokenAuth](../README.md#TokenAuth)
 
 ### HTTP request headers
 
@@ -475,6 +524,13 @@ Example cURL request:  ```console curl -s \\   -H \"Authorization: Token <paste-
 ```ruby
 require 'time'
 require 'replicate-openapi-rb'
+# setup authorization
+Replicate.configure do |config|
+  # Configure API key authorization: TokenAuth
+  config.api_key['TokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['TokenAuth'] = 'Bearer'
+end
 
 api_instance = Replicate::DefaultApi.new
 model_owner = 'model_owner_example' # String | The name of the user or organization that owns the model. 
@@ -521,7 +577,7 @@ nil (empty response body)
 
 ### Authorization
 
-No authorization required
+[TokenAuth](../README.md#TokenAuth)
 
 ### HTTP request headers
 
@@ -542,6 +598,13 @@ Example cURL request:  ```console curl -s \\   -H \"Authorization: Token <paste-
 ```ruby
 require 'time'
 require 'replicate-openapi-rb'
+# setup authorization
+Replicate.configure do |config|
+  # Configure API key authorization: TokenAuth
+  config.api_key['TokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['TokenAuth'] = 'Bearer'
+end
 
 api_instance = Replicate::DefaultApi.new
 model_owner = 'model_owner_example' # String | The name of the user or organization that owns the model. 
@@ -586,7 +649,7 @@ nil (empty response body)
 
 ### Authorization
 
-No authorization required
+[TokenAuth](../README.md#TokenAuth)
 
 ### HTTP request headers
 
@@ -605,6 +668,13 @@ Cancel a prediction
 ```ruby
 require 'time'
 require 'replicate-openapi-rb'
+# setup authorization
+Replicate.configure do |config|
+  # Configure API key authorization: TokenAuth
+  config.api_key['TokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['TokenAuth'] = 'Bearer'
+end
 
 api_instance = Replicate::DefaultApi.new
 prediction_id = 'prediction_id_example' # String | The ID of the prediction to cancel. 
@@ -647,7 +717,7 @@ nil (empty response body)
 
 ### Authorization
 
-No authorization required
+[TokenAuth](../README.md#TokenAuth)
 
 ### HTTP request headers
 
@@ -668,6 +738,13 @@ Start a new prediction for the model version and inputs you provide.  Example re
 ```ruby
 require 'time'
 require 'replicate-openapi-rb'
+# setup authorization
+Replicate.configure do |config|
+  # Configure API key authorization: TokenAuth
+  config.api_key['TokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['TokenAuth'] = 'Bearer'
+end
 
 api_instance = Replicate::DefaultApi.new
 opts = {
@@ -713,7 +790,7 @@ end
 
 ### Authorization
 
-No authorization required
+[TokenAuth](../README.md#TokenAuth)
 
 ### HTTP request headers
 
@@ -734,6 +811,13 @@ Get the current state of a prediction.  Example cURL request:  ```console curl -
 ```ruby
 require 'time'
 require 'replicate-openapi-rb'
+# setup authorization
+Replicate.configure do |config|
+  # Configure API key authorization: TokenAuth
+  config.api_key['TokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['TokenAuth'] = 'Bearer'
+end
 
 api_instance = Replicate::DefaultApi.new
 prediction_id = 'prediction_id_example' # String | The ID of the prediction to get. 
@@ -776,7 +860,7 @@ nil (empty response body)
 
 ### Authorization
 
-No authorization required
+[TokenAuth](../README.md#TokenAuth)
 
 ### HTTP request headers
 
@@ -797,6 +881,13 @@ Get a paginated list of predictions that you've created. This will include predi
 ```ruby
 require 'time'
 require 'replicate-openapi-rb'
+# setup authorization
+Replicate.configure do |config|
+  # Configure API key authorization: TokenAuth
+  config.api_key['TokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['TokenAuth'] = 'Bearer'
+end
 
 api_instance = Replicate::DefaultApi.new
 
@@ -836,7 +927,7 @@ nil (empty response body)
 
 ### Authorization
 
-No authorization required
+[TokenAuth](../README.md#TokenAuth)
 
 ### HTTP request headers
 
@@ -855,6 +946,13 @@ Cancel a training
 ```ruby
 require 'time'
 require 'replicate-openapi-rb'
+# setup authorization
+Replicate.configure do |config|
+  # Configure API key authorization: TokenAuth
+  config.api_key['TokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['TokenAuth'] = 'Bearer'
+end
 
 api_instance = Replicate::DefaultApi.new
 training_id = 'training_id_example' # String | The ID of the training you want to cancel. 
@@ -897,7 +995,7 @@ nil (empty response body)
 
 ### Authorization
 
-No authorization required
+[TokenAuth](../README.md#TokenAuth)
 
 ### HTTP request headers
 
@@ -918,6 +1016,13 @@ Start a new training of the model version you specify.  Example request body:  `
 ```ruby
 require 'time'
 require 'replicate-openapi-rb'
+# setup authorization
+Replicate.configure do |config|
+  # Configure API key authorization: TokenAuth
+  config.api_key['TokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['TokenAuth'] = 'Bearer'
+end
 
 api_instance = Replicate::DefaultApi.new
 model_owner = 'model_owner_example' # String | The name of the user or organization that owns the model. 
@@ -969,7 +1074,7 @@ end
 
 ### Authorization
 
-No authorization required
+[TokenAuth](../README.md#TokenAuth)
 
 ### HTTP request headers
 
@@ -990,6 +1095,13 @@ Get the current state of a training.  Example cURL request:  ```console curl -s 
 ```ruby
 require 'time'
 require 'replicate-openapi-rb'
+# setup authorization
+Replicate.configure do |config|
+  # Configure API key authorization: TokenAuth
+  config.api_key['TokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['TokenAuth'] = 'Bearer'
+end
 
 api_instance = Replicate::DefaultApi.new
 training_id = 'training_id_example' # String | The ID of the training to get. 
@@ -1032,7 +1144,7 @@ nil (empty response body)
 
 ### Authorization
 
-No authorization required
+[TokenAuth](../README.md#TokenAuth)
 
 ### HTTP request headers
 
@@ -1053,6 +1165,13 @@ Get a paginated list of trainings that you've created. This will include trainin
 ```ruby
 require 'time'
 require 'replicate-openapi-rb'
+# setup authorization
+Replicate.configure do |config|
+  # Configure API key authorization: TokenAuth
+  config.api_key['TokenAuth'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['TokenAuth'] = 'Bearer'
+end
 
 api_instance = Replicate::DefaultApi.new
 
@@ -1092,7 +1211,7 @@ nil (empty response body)
 
 ### Authorization
 
-No authorization required
+[TokenAuth](../README.md#TokenAuth)
 
 ### HTTP request headers
 

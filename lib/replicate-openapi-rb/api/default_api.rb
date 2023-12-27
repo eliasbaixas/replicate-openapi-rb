@@ -61,7 +61,7 @@ module Replicate
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['TokenAuth']
 
       new_options = opts.merge(
         :operation => :"DefaultApi.collections_get",
@@ -116,7 +116,7 @@ module Replicate
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['TokenAuth']
 
       new_options = opts.merge(
         :operation => :"DefaultApi.collections_list",
@@ -173,7 +173,7 @@ module Replicate
       return_type = opts[:debug_return_type] || 'Array<HardwareList200ResponseInner>'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['TokenAuth']
 
       new_options = opts.merge(
         :operation => :"DefaultApi.hardware_list",
@@ -239,7 +239,7 @@ module Replicate
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['TokenAuth']
 
       new_options = opts.merge(
         :operation => :"DefaultApi.models_create",
@@ -306,7 +306,7 @@ module Replicate
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['TokenAuth']
 
       new_options = opts.merge(
         :operation => :"DefaultApi.models_get",
@@ -361,7 +361,7 @@ module Replicate
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['TokenAuth']
 
       new_options = opts.merge(
         :operation => :"DefaultApi.models_list",
@@ -434,7 +434,7 @@ module Replicate
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['TokenAuth']
 
       new_options = opts.merge(
         :operation => :"DefaultApi.models_versions_delete",
@@ -507,7 +507,7 @@ module Replicate
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['TokenAuth']
 
       new_options = opts.merge(
         :operation => :"DefaultApi.models_versions_get",
@@ -574,7 +574,7 @@ module Replicate
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['TokenAuth']
 
       new_options = opts.merge(
         :operation => :"DefaultApi.models_versions_list",
@@ -633,7 +633,7 @@ module Replicate
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['TokenAuth']
 
       new_options = opts.merge(
         :operation => :"DefaultApi.predictions_cancel",
@@ -697,7 +697,7 @@ module Replicate
       return_type = opts[:debug_return_type] || 'ApiResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['TokenAuth']
 
       new_options = opts.merge(
         :operation => :"DefaultApi.predictions_create",
@@ -758,7 +758,7 @@ module Replicate
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['TokenAuth']
 
       new_options = opts.merge(
         :operation => :"DefaultApi.predictions_get",
@@ -813,7 +813,7 @@ module Replicate
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['TokenAuth']
 
       new_options = opts.merge(
         :operation => :"DefaultApi.predictions_list",
@@ -872,7 +872,7 @@ module Replicate
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['TokenAuth']
 
       new_options = opts.merge(
         :operation => :"DefaultApi.trainings_cancel",
@@ -954,7 +954,7 @@ module Replicate
       return_type = opts[:debug_return_type] || 'ApiResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['TokenAuth']
 
       new_options = opts.merge(
         :operation => :"DefaultApi.trainings_create",
@@ -1015,7 +1015,7 @@ module Replicate
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['TokenAuth']
 
       new_options = opts.merge(
         :operation => :"DefaultApi.trainings_get",
@@ -1070,7 +1070,7 @@ module Replicate
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['TokenAuth']
 
       new_options = opts.merge(
         :operation => :"DefaultApi.trainings_list",

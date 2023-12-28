@@ -720,17 +720,17 @@ module Replicate
     # Get the current state of a prediction.  Example cURL request:  ```console curl -s \\   -H \"Authorization: Token <paste-your-token-here>\" \\   https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu ```  The response will be the prediction object:  ```json {   \"id\": \"gm3qorzdhgbfurvjtvhg6dckhu\",   \"model\": \"replicate/hello-world\",   \"version\": \"5c7d5dc6dd8bf75c1acaa8565735e7986bc5b66206b55cca93cb72c9bf15ccaa\",   \"input\": {     \"text\": \"Alice\"   },   \"logs\": \"\",   \"output\": \"hello Alice\",   \"error\": null,   \"status\": \"succeeded\",   \"created_at\": \"2023-09-08T16:19:34.765994Z\",   \"started_at\": \"2023-09-08T16:19:34.779176Z\",   \"completed_at\": \"2023-09-08T16:19:34.791859Z\",   \"metrics\": {     \"predict_time\": 0.012683   },   \"urls\": {     \"cancel\": \"https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu/cancel\",     \"get\": \"https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu\"   } } ```  `status` will be one of:  - `starting`: the prediction is starting up. If this status lasts longer than a few seconds, then it's typically because a new worker is being started to run the prediction. - `processing`: the `predict()` method of the model is currently running. - `succeeded`: the prediction completed successfully. - `failed`: the prediction encountered an error during processing. - `canceled`: the prediction was canceled by its creator.  In the case of success, `output` will be an object containing the output of the model. Any files will be represented as HTTPS URLs. You'll need to pass the `Authorization` header to request them.  In the case of failure, `error` will contain the error encountered during the prediction.  Terminated predictions (with a status of `succeeded`, `failed`, or `canceled`) will include a `metrics` object with a `predict_time` property showing the amount of CPU or GPU time, in seconds, that the prediction used while running. It won't include time waiting for the prediction to start.  Input and output (including any files) are automatically deleted after an hour, so you must save a copy of any files in the output if you'd like to continue using them.  Output files are served by `replicate.delivery` and its subdomains. If you use an allow list of external domains for your assets, add `replicate.delivery` and `*.replicate.delivery` to it. 
     # @param prediction_id [String] The ID of the prediction to get. 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [PredictionResponse]
     def predictions_get(prediction_id, opts = {})
-      predictions_get_with_http_info(prediction_id, opts)
-      nil
+      data, _status_code, _headers = predictions_get_with_http_info(prediction_id, opts)
+      data
     end
 
     # Get a prediction
     # Get the current state of a prediction.  Example cURL request:  &#x60;&#x60;&#x60;console curl -s \\   -H \&quot;Authorization: Token &lt;paste-your-token-here&gt;\&quot; \\   https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu &#x60;&#x60;&#x60;  The response will be the prediction object:  &#x60;&#x60;&#x60;json {   \&quot;id\&quot;: \&quot;gm3qorzdhgbfurvjtvhg6dckhu\&quot;,   \&quot;model\&quot;: \&quot;replicate/hello-world\&quot;,   \&quot;version\&quot;: \&quot;5c7d5dc6dd8bf75c1acaa8565735e7986bc5b66206b55cca93cb72c9bf15ccaa\&quot;,   \&quot;input\&quot;: {     \&quot;text\&quot;: \&quot;Alice\&quot;   },   \&quot;logs\&quot;: \&quot;\&quot;,   \&quot;output\&quot;: \&quot;hello Alice\&quot;,   \&quot;error\&quot;: null,   \&quot;status\&quot;: \&quot;succeeded\&quot;,   \&quot;created_at\&quot;: \&quot;2023-09-08T16:19:34.765994Z\&quot;,   \&quot;started_at\&quot;: \&quot;2023-09-08T16:19:34.779176Z\&quot;,   \&quot;completed_at\&quot;: \&quot;2023-09-08T16:19:34.791859Z\&quot;,   \&quot;metrics\&quot;: {     \&quot;predict_time\&quot;: 0.012683   },   \&quot;urls\&quot;: {     \&quot;cancel\&quot;: \&quot;https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu/cancel\&quot;,     \&quot;get\&quot;: \&quot;https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu\&quot;   } } &#x60;&#x60;&#x60;  &#x60;status&#x60; will be one of:  - &#x60;starting&#x60;: the prediction is starting up. If this status lasts longer than a few seconds, then it&#39;s typically because a new worker is being started to run the prediction. - &#x60;processing&#x60;: the &#x60;predict()&#x60; method of the model is currently running. - &#x60;succeeded&#x60;: the prediction completed successfully. - &#x60;failed&#x60;: the prediction encountered an error during processing. - &#x60;canceled&#x60;: the prediction was canceled by its creator.  In the case of success, &#x60;output&#x60; will be an object containing the output of the model. Any files will be represented as HTTPS URLs. You&#39;ll need to pass the &#x60;Authorization&#x60; header to request them.  In the case of failure, &#x60;error&#x60; will contain the error encountered during the prediction.  Terminated predictions (with a status of &#x60;succeeded&#x60;, &#x60;failed&#x60;, or &#x60;canceled&#x60;) will include a &#x60;metrics&#x60; object with a &#x60;predict_time&#x60; property showing the amount of CPU or GPU time, in seconds, that the prediction used while running. It won&#39;t include time waiting for the prediction to start.  Input and output (including any files) are automatically deleted after an hour, so you must save a copy of any files in the output if you&#39;d like to continue using them.  Output files are served by &#x60;replicate.delivery&#x60; and its subdomains. If you use an allow list of external domains for your assets, add &#x60;replicate.delivery&#x60; and &#x60;*.replicate.delivery&#x60; to it. 
     # @param prediction_id [String] The ID of the prediction to get. 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(PredictionResponse, Integer, Hash)>] PredictionResponse data, response status code and response headers
     def predictions_get_with_http_info(prediction_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.predictions_get ...'
@@ -747,6 +747,8 @@ module Replicate
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -755,7 +757,7 @@ module Replicate
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'PredictionResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['TokenAuth']
@@ -780,16 +782,16 @@ module Replicate
     # List predictions
     # Get a paginated list of predictions that you've created. This will include predictions created from the API and the website. It will return 100 records per page.  Example cURL request:  ```console curl -s \\   -H \"Authorization: Token <paste-your-token-here>\" \\   https://api.replicate.com/v1/predictions ```  The response will be a paginated JSON array of prediction objects, sorted with the most recent prediction first:  ```json {   \"next\": null,   \"previous\": null,   \"results\": [     {       \"completed_at\": \"2023-09-08T16:19:34.791859Z\",       \"created_at\": \"2023-09-08T16:19:34.907244Z\",       \"error\": null,       \"id\": \"gm3qorzdhgbfurvjtvhg6dckhu\",       \"input\": {         \"text\": \"Alice\"       },       \"metrics\": {         \"predict_time\": 0.012683       },       \"output\": \"hello Alice\",       \"started_at\": \"2023-09-08T16:19:34.779176Z\",       \"source\": \"api\",       \"status\": \"succeeded\",       \"urls\": {         \"get\": \"https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu\",         \"cancel\": \"https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu/cancel\"       },       \"model\": \"replicate/hello-world\",       \"version\": \"5c7d5dc6dd8bf75c1acaa8565735e7986bc5b66206b55cca93cb72c9bf15ccaa\",     }   ] } ```  `id` will be the unique ID of the prediction.  `source` will indicate how the prediction was created. Possible values are `web` or `api`.  `status` will be the status of the prediction. Refer to [get a single prediction](#predictions.get) for possible values.  `urls` will be a convenience object that can be used to construct new API requests for the given prediction.  `model` will be the model identifier string in the format of `{model_owner}/{model_name}`.  `version` will be the unique ID of model version used to create the prediction. 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [PaginatedPredictionResponse]
     def predictions_list(opts = {})
-      predictions_list_with_http_info(opts)
-      nil
+      data, _status_code, _headers = predictions_list_with_http_info(opts)
+      data
     end
 
     # List predictions
     # Get a paginated list of predictions that you&#39;ve created. This will include predictions created from the API and the website. It will return 100 records per page.  Example cURL request:  &#x60;&#x60;&#x60;console curl -s \\   -H \&quot;Authorization: Token &lt;paste-your-token-here&gt;\&quot; \\   https://api.replicate.com/v1/predictions &#x60;&#x60;&#x60;  The response will be a paginated JSON array of prediction objects, sorted with the most recent prediction first:  &#x60;&#x60;&#x60;json {   \&quot;next\&quot;: null,   \&quot;previous\&quot;: null,   \&quot;results\&quot;: [     {       \&quot;completed_at\&quot;: \&quot;2023-09-08T16:19:34.791859Z\&quot;,       \&quot;created_at\&quot;: \&quot;2023-09-08T16:19:34.907244Z\&quot;,       \&quot;error\&quot;: null,       \&quot;id\&quot;: \&quot;gm3qorzdhgbfurvjtvhg6dckhu\&quot;,       \&quot;input\&quot;: {         \&quot;text\&quot;: \&quot;Alice\&quot;       },       \&quot;metrics\&quot;: {         \&quot;predict_time\&quot;: 0.012683       },       \&quot;output\&quot;: \&quot;hello Alice\&quot;,       \&quot;started_at\&quot;: \&quot;2023-09-08T16:19:34.779176Z\&quot;,       \&quot;source\&quot;: \&quot;api\&quot;,       \&quot;status\&quot;: \&quot;succeeded\&quot;,       \&quot;urls\&quot;: {         \&quot;get\&quot;: \&quot;https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu\&quot;,         \&quot;cancel\&quot;: \&quot;https://api.replicate.com/v1/predictions/gm3qorzdhgbfurvjtvhg6dckhu/cancel\&quot;       },       \&quot;model\&quot;: \&quot;replicate/hello-world\&quot;,       \&quot;version\&quot;: \&quot;5c7d5dc6dd8bf75c1acaa8565735e7986bc5b66206b55cca93cb72c9bf15ccaa\&quot;,     }   ] } &#x60;&#x60;&#x60;  &#x60;id&#x60; will be the unique ID of the prediction.  &#x60;source&#x60; will indicate how the prediction was created. Possible values are &#x60;web&#x60; or &#x60;api&#x60;.  &#x60;status&#x60; will be the status of the prediction. Refer to [get a single prediction](#predictions.get) for possible values.  &#x60;urls&#x60; will be a convenience object that can be used to construct new API requests for the given prediction.  &#x60;model&#x60; will be the model identifier string in the format of &#x60;{model_owner}/{model_name}&#x60;.  &#x60;version&#x60; will be the unique ID of model version used to create the prediction. 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(PaginatedPredictionResponse, Integer, Hash)>] PaginatedPredictionResponse data, response status code and response headers
     def predictions_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.predictions_list ...'
@@ -802,6 +804,8 @@ module Replicate
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -810,7 +814,7 @@ module Replicate
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'PaginatedPredictionResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['TokenAuth']
@@ -977,17 +981,17 @@ module Replicate
     # Get the current state of a training.  Example cURL request:  ```console curl -s \\   -H \"Authorization: Token <paste-your-token-here>\" \\   https://api.replicate.com/v1/trainings/zz4ibbonubfz7carwiefibzgga ```  The response will be the training object:  ```json {   \"completed_at\": \"2023-09-08T16:41:19.826523Z\",   \"created_at\": \"2023-09-08T16:32:57.018467Z\",   \"error\": null,   \"id\": \"zz4ibbonubfz7carwiefibzgga\",   \"input\": {     \"input_images\": \"https://example.com/my-input-images.zip\"   },   \"logs\": \"...\",   \"metrics\": {     \"predict_time\": 502.713876   },   \"output\": {     \"version\": \"...\",     \"weights\": \"...\"   },   \"started_at\": \"2023-09-08T16:32:57.112647Z\",   \"status\": \"succeeded\",   \"urls\": {     \"get\": \"https://api.replicate.com/v1/trainings/zz4ibbonubfz7carwiefibzgga\",     \"cancel\": \"https://api.replicate.com/v1/trainings/zz4ibbonubfz7carwiefibzgga/cancel\"   },   \"model\": \"stability-ai/sdxl\",   \"version\": \"da77bc59ee60423279fd632efb4795ab731d9e3ca9705ef3341091fb989b7eaf\", } ```  `status` will be one of:  - `starting`: the training is starting up. If this status lasts longer than a few seconds, then it's typically because a new worker is being started to run the training. - `processing`: the `train()` method of the model is currently running. - `succeeded`: the training completed successfully. - `failed`: the training encountered an error during processing. - `canceled`: the training was canceled by its creator.  In the case of success, `output` will be an object containing the output of the model. Any files will be represented as HTTPS URLs. You'll need to pass the `Authorization` header to request them.  In the case of failure, `error` will contain the error encountered during the training.  Terminated trainings (with a status of `succeeded`, `failed`, or `canceled`) will include a `metrics` object with a `predict_time` property showing the amount of CPU or GPU time, in seconds, that the training used while running. It won't include time waiting for the training to start. 
     # @param training_id [String] The ID of the training to get. 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [TrainingResponse]
     def trainings_get(training_id, opts = {})
-      trainings_get_with_http_info(training_id, opts)
-      nil
+      data, _status_code, _headers = trainings_get_with_http_info(training_id, opts)
+      data
     end
 
     # Get a training
     # Get the current state of a training.  Example cURL request:  &#x60;&#x60;&#x60;console curl -s \\   -H \&quot;Authorization: Token &lt;paste-your-token-here&gt;\&quot; \\   https://api.replicate.com/v1/trainings/zz4ibbonubfz7carwiefibzgga &#x60;&#x60;&#x60;  The response will be the training object:  &#x60;&#x60;&#x60;json {   \&quot;completed_at\&quot;: \&quot;2023-09-08T16:41:19.826523Z\&quot;,   \&quot;created_at\&quot;: \&quot;2023-09-08T16:32:57.018467Z\&quot;,   \&quot;error\&quot;: null,   \&quot;id\&quot;: \&quot;zz4ibbonubfz7carwiefibzgga\&quot;,   \&quot;input\&quot;: {     \&quot;input_images\&quot;: \&quot;https://example.com/my-input-images.zip\&quot;   },   \&quot;logs\&quot;: \&quot;...\&quot;,   \&quot;metrics\&quot;: {     \&quot;predict_time\&quot;: 502.713876   },   \&quot;output\&quot;: {     \&quot;version\&quot;: \&quot;...\&quot;,     \&quot;weights\&quot;: \&quot;...\&quot;   },   \&quot;started_at\&quot;: \&quot;2023-09-08T16:32:57.112647Z\&quot;,   \&quot;status\&quot;: \&quot;succeeded\&quot;,   \&quot;urls\&quot;: {     \&quot;get\&quot;: \&quot;https://api.replicate.com/v1/trainings/zz4ibbonubfz7carwiefibzgga\&quot;,     \&quot;cancel\&quot;: \&quot;https://api.replicate.com/v1/trainings/zz4ibbonubfz7carwiefibzgga/cancel\&quot;   },   \&quot;model\&quot;: \&quot;stability-ai/sdxl\&quot;,   \&quot;version\&quot;: \&quot;da77bc59ee60423279fd632efb4795ab731d9e3ca9705ef3341091fb989b7eaf\&quot;, } &#x60;&#x60;&#x60;  &#x60;status&#x60; will be one of:  - &#x60;starting&#x60;: the training is starting up. If this status lasts longer than a few seconds, then it&#39;s typically because a new worker is being started to run the training. - &#x60;processing&#x60;: the &#x60;train()&#x60; method of the model is currently running. - &#x60;succeeded&#x60;: the training completed successfully. - &#x60;failed&#x60;: the training encountered an error during processing. - &#x60;canceled&#x60;: the training was canceled by its creator.  In the case of success, &#x60;output&#x60; will be an object containing the output of the model. Any files will be represented as HTTPS URLs. You&#39;ll need to pass the &#x60;Authorization&#x60; header to request them.  In the case of failure, &#x60;error&#x60; will contain the error encountered during the training.  Terminated trainings (with a status of &#x60;succeeded&#x60;, &#x60;failed&#x60;, or &#x60;canceled&#x60;) will include a &#x60;metrics&#x60; object with a &#x60;predict_time&#x60; property showing the amount of CPU or GPU time, in seconds, that the training used while running. It won&#39;t include time waiting for the training to start. 
     # @param training_id [String] The ID of the training to get. 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(TrainingResponse, Integer, Hash)>] TrainingResponse data, response status code and response headers
     def trainings_get_with_http_info(training_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.trainings_get ...'
@@ -1004,6 +1008,8 @@ module Replicate
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -1012,7 +1018,7 @@ module Replicate
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'TrainingResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['TokenAuth']
@@ -1037,16 +1043,16 @@ module Replicate
     # List trainings
     # Get a paginated list of trainings that you've created. This will include trainings created from the API and the website. It will return 100 records per page.  Example cURL request:  ```console curl -s \\   -H \"Authorization: Token <paste-your-token-here>\" \\   https://api.replicate.com/v1/trainings ```  The response will be a paginated JSON array of training objects, sorted with the most recent training first:  ```json {   \"next\": null,   \"previous\": null,   \"results\": [     {       \"completed_at\": \"2023-09-08T16:41:19.826523Z\",       \"created_at\": \"2023-09-08T16:32:57.018467Z\",       \"error\": null,       \"id\": \"zz4ibbonubfz7carwiefibzgga\",       \"input\": {         \"input_images\": \"https://example.com/my-input-images.zip\"       },       \"metrics\": {         \"predict_time\": 502.713876       },       \"output\": {         \"version\": \"...\",         \"weights\": \"...\"       },       \"started_at\": \"2023-09-08T16:32:57.112647Z\",       \"source\": \"api\",       \"status\": \"succeeded\",       \"urls\": {         \"get\": \"https://api.replicate.com/v1/trainings/zz4ibbonubfz7carwiefibzgga\",         \"cancel\": \"https://api.replicate.com/v1/trainings/zz4ibbonubfz7carwiefibzgga/cancel\"       },       \"model\": \"stability-ai/sdxl\",       \"version\": \"da77bc59ee60423279fd632efb4795ab731d9e3ca9705ef3341091fb989b7eaf\",     }   ] } ```  `id` will be the unique ID of the training.  `source` will indicate how the training was created. Possible values are `web` or `api`.  `status` will be the status of the training. Refer to [get a single training](#trainings.get) for possible values.  `urls` will be a convenience object that can be used to construct new API requests for the given training.  `version` will be the unique ID of model version used to create the training. 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [PaginatedTrainingResponse]
     def trainings_list(opts = {})
-      trainings_list_with_http_info(opts)
-      nil
+      data, _status_code, _headers = trainings_list_with_http_info(opts)
+      data
     end
 
     # List trainings
     # Get a paginated list of trainings that you&#39;ve created. This will include trainings created from the API and the website. It will return 100 records per page.  Example cURL request:  &#x60;&#x60;&#x60;console curl -s \\   -H \&quot;Authorization: Token &lt;paste-your-token-here&gt;\&quot; \\   https://api.replicate.com/v1/trainings &#x60;&#x60;&#x60;  The response will be a paginated JSON array of training objects, sorted with the most recent training first:  &#x60;&#x60;&#x60;json {   \&quot;next\&quot;: null,   \&quot;previous\&quot;: null,   \&quot;results\&quot;: [     {       \&quot;completed_at\&quot;: \&quot;2023-09-08T16:41:19.826523Z\&quot;,       \&quot;created_at\&quot;: \&quot;2023-09-08T16:32:57.018467Z\&quot;,       \&quot;error\&quot;: null,       \&quot;id\&quot;: \&quot;zz4ibbonubfz7carwiefibzgga\&quot;,       \&quot;input\&quot;: {         \&quot;input_images\&quot;: \&quot;https://example.com/my-input-images.zip\&quot;       },       \&quot;metrics\&quot;: {         \&quot;predict_time\&quot;: 502.713876       },       \&quot;output\&quot;: {         \&quot;version\&quot;: \&quot;...\&quot;,         \&quot;weights\&quot;: \&quot;...\&quot;       },       \&quot;started_at\&quot;: \&quot;2023-09-08T16:32:57.112647Z\&quot;,       \&quot;source\&quot;: \&quot;api\&quot;,       \&quot;status\&quot;: \&quot;succeeded\&quot;,       \&quot;urls\&quot;: {         \&quot;get\&quot;: \&quot;https://api.replicate.com/v1/trainings/zz4ibbonubfz7carwiefibzgga\&quot;,         \&quot;cancel\&quot;: \&quot;https://api.replicate.com/v1/trainings/zz4ibbonubfz7carwiefibzgga/cancel\&quot;       },       \&quot;model\&quot;: \&quot;stability-ai/sdxl\&quot;,       \&quot;version\&quot;: \&quot;da77bc59ee60423279fd632efb4795ab731d9e3ca9705ef3341091fb989b7eaf\&quot;,     }   ] } &#x60;&#x60;&#x60;  &#x60;id&#x60; will be the unique ID of the training.  &#x60;source&#x60; will indicate how the training was created. Possible values are &#x60;web&#x60; or &#x60;api&#x60;.  &#x60;status&#x60; will be the status of the training. Refer to [get a single training](#trainings.get) for possible values.  &#x60;urls&#x60; will be a convenience object that can be used to construct new API requests for the given training.  &#x60;version&#x60; will be the unique ID of model version used to create the training. 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(PaginatedTrainingResponse, Integer, Hash)>] PaginatedTrainingResponse data, response status code and response headers
     def trainings_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.trainings_list ...'
@@ -1059,6 +1065,8 @@ module Replicate
 
       # header parameters
       header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -1067,7 +1075,7 @@ module Replicate
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'PaginatedTrainingResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['TokenAuth']

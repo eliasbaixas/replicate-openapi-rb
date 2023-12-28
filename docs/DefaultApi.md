@@ -800,7 +800,7 @@ end
 
 ## predictions_get
 
-> predictions_get(prediction_id)
+> <PredictionResponse> predictions_get(prediction_id)
 
 Get a prediction
 
@@ -824,7 +824,8 @@ prediction_id = 'prediction_id_example' # String | The ID of the prediction to g
 
 begin
   # Get a prediction
-  api_instance.predictions_get(prediction_id)
+  result = api_instance.predictions_get(prediction_id)
+  p result
 rescue Replicate::ApiError => e
   puts "Error when calling DefaultApi->predictions_get: #{e}"
 end
@@ -832,9 +833,9 @@ end
 
 #### Using the predictions_get_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> predictions_get_with_http_info(prediction_id)
+> <Array(<PredictionResponse>, Integer, Hash)> predictions_get_with_http_info(prediction_id)
 
 ```ruby
 begin
@@ -842,7 +843,7 @@ begin
   data, status_code, headers = api_instance.predictions_get_with_http_info(prediction_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => <PredictionResponse>
 rescue Replicate::ApiError => e
   puts "Error when calling DefaultApi->predictions_get_with_http_info: #{e}"
 end
@@ -856,7 +857,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+[**PredictionResponse**](PredictionResponse.md)
 
 ### Authorization
 
@@ -865,12 +866,12 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## predictions_list
 
-> predictions_list
+> <PaginatedPredictionResponse> predictions_list
 
 List predictions
 
@@ -893,7 +894,8 @@ api_instance = Replicate::DefaultApi.new
 
 begin
   # List predictions
-  api_instance.predictions_list
+  result = api_instance.predictions_list
+  p result
 rescue Replicate::ApiError => e
   puts "Error when calling DefaultApi->predictions_list: #{e}"
 end
@@ -901,9 +903,9 @@ end
 
 #### Using the predictions_list_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> predictions_list_with_http_info
+> <Array(<PaginatedPredictionResponse>, Integer, Hash)> predictions_list_with_http_info
 
 ```ruby
 begin
@@ -911,7 +913,7 @@ begin
   data, status_code, headers = api_instance.predictions_list_with_http_info
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => <PaginatedPredictionResponse>
 rescue Replicate::ApiError => e
   puts "Error when calling DefaultApi->predictions_list_with_http_info: #{e}"
 end
@@ -923,7 +925,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+[**PaginatedPredictionResponse**](PaginatedPredictionResponse.md)
 
 ### Authorization
 
@@ -932,7 +934,7 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## trainings_cancel
@@ -1084,7 +1086,7 @@ end
 
 ## trainings_get
 
-> trainings_get(training_id)
+> <TrainingResponse> trainings_get(training_id)
 
 Get a training
 
@@ -1108,7 +1110,8 @@ training_id = 'training_id_example' # String | The ID of the training to get.
 
 begin
   # Get a training
-  api_instance.trainings_get(training_id)
+  result = api_instance.trainings_get(training_id)
+  p result
 rescue Replicate::ApiError => e
   puts "Error when calling DefaultApi->trainings_get: #{e}"
 end
@@ -1116,9 +1119,9 @@ end
 
 #### Using the trainings_get_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> trainings_get_with_http_info(training_id)
+> <Array(<TrainingResponse>, Integer, Hash)> trainings_get_with_http_info(training_id)
 
 ```ruby
 begin
@@ -1126,7 +1129,7 @@ begin
   data, status_code, headers = api_instance.trainings_get_with_http_info(training_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => <TrainingResponse>
 rescue Replicate::ApiError => e
   puts "Error when calling DefaultApi->trainings_get_with_http_info: #{e}"
 end
@@ -1140,7 +1143,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+[**TrainingResponse**](TrainingResponse.md)
 
 ### Authorization
 
@@ -1149,12 +1152,12 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 
 ## trainings_list
 
-> trainings_list
+> <PaginatedTrainingResponse> trainings_list
 
 List trainings
 
@@ -1177,7 +1180,8 @@ api_instance = Replicate::DefaultApi.new
 
 begin
   # List trainings
-  api_instance.trainings_list
+  result = api_instance.trainings_list
+  p result
 rescue Replicate::ApiError => e
   puts "Error when calling DefaultApi->trainings_list: #{e}"
 end
@@ -1185,9 +1189,9 @@ end
 
 #### Using the trainings_list_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> trainings_list_with_http_info
+> <Array(<PaginatedTrainingResponse>, Integer, Hash)> trainings_list_with_http_info
 
 ```ruby
 begin
@@ -1195,7 +1199,7 @@ begin
   data, status_code, headers = api_instance.trainings_list_with_http_info
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => <PaginatedTrainingResponse>
 rescue Replicate::ApiError => e
   puts "Error when calling DefaultApi->trainings_list_with_http_info: #{e}"
 end
@@ -1207,7 +1211,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-nil (empty response body)
+[**PaginatedTrainingResponse**](PaginatedTrainingResponse.md)
 
 ### Authorization
 
@@ -1216,5 +1220,5 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 

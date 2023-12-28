@@ -676,6 +676,10 @@ paths:
       responses:
         '200':
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedPredictionResponse'
       summary: List predictions
     post:
       description: |
@@ -880,6 +884,10 @@ paths:
       responses:
         '200':
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PredictionResponse'
       summary: Get a prediction
   "/v1/predictions/{prediction_id}/cancel":
     post:
@@ -959,6 +967,10 @@ paths:
       responses:
         '200':
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTrainingResponse'
       summary: List trainings
   "/v1/trainings/{training_id}":
     get:
@@ -1029,6 +1041,10 @@ paths:
       responses:
         '200':
           description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrainingResponse'
       summary: Get a training
   "/v1/trainings/{training_id}/cancel":
     post:
@@ -1088,4 +1104,145 @@ components:
             get:
               type: string
               format: uri
+    TrainingResponse:
+      type: object
+      properties:
+        completed_at:
+          type: string
+          format: date-time
+        created_at:
+          type: string
+          format: date-time
+        error:
+          type: string
+          nullable: true
+        id:
+          type: string
+        input:
+          type: object
+          properties:
+            input_images:
+              type: string
+              format: uri
+        logs:
+          type: string
+        metrics:
+          type: object
+          properties:
+            predict_time:
+              type: number
+        output:
+          type: object
+          properties:
+            version:
+              type: string
+            weights:
+              type: string
+        started_at:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum:
+            - starting
+            - processing
+            - succeeded
+            - failed
+            - canceled
+        urls:
+          type: object
+          properties:
+            get:
+              type: string
+              format: uri
+            cancel:
+              type: string
+              format: uri
+        model:
+          type: string
+        version:
+          type: string
+
+    PredictionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        model:
+          type: string
+        version:
+          type: string
+        input:
+          type: object
+          properties:
+            text:
+              type: string
+        logs:
+          type: string
+        output:
+          type: string
+        error:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum:
+            - starting
+            - processing
+            - succeeded
+            - failed
+            - canceled
+        created_at:
+          type: string
+          format: date-time
+        started_at:
+          type: string
+          format: date-time
+        completed_at:
+          type: string
+          format: date-time
+        metrics:
+          type: object
+          properties:
+            predict_time:
+              type: number
+        urls:
+          type: object
+          properties:
+            cancel:
+              type: string
+              format: uri
+            get:
+              type: string
+              format: uri
+    PaginatedPredictionResponse:
+      type: object
+      properties:
+        next:
+          type: string
+          format: uri
+          nullable: true
+        previous:
+          type: string
+          format: uri
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/PredictionResponse'
+    PaginatedTrainingResponse:
+      type: object
+      properties:
+        next:
+          type: string
+          format: uri
+          nullable: true
+        previous:
+          type: string
+          format: uri
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrainingResponse'
 

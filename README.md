@@ -108,7 +108,14 @@ Class | Method | HTTP request | Description
  - [Replicate::ApiResponseUrls](docs/ApiResponseUrls.md)
  - [Replicate::HardwareList200ResponseInner](docs/HardwareList200ResponseInner.md)
  - [Replicate::ModelsCreateRequest](docs/ModelsCreateRequest.md)
+ - [Replicate::PaginatedPredictionResponse](docs/PaginatedPredictionResponse.md)
+ - [Replicate::PaginatedTrainingResponse](docs/PaginatedTrainingResponse.md)
+ - [Replicate::PredictionResponse](docs/PredictionResponse.md)
+ - [Replicate::PredictionResponseInput](docs/PredictionResponseInput.md)
  - [Replicate::PredictionsCreateRequest](docs/PredictionsCreateRequest.md)
+ - [Replicate::TrainingResponse](docs/TrainingResponse.md)
+ - [Replicate::TrainingResponseMetrics](docs/TrainingResponseMetrics.md)
+ - [Replicate::TrainingResponseOutput](docs/TrainingResponseOutput.md)
  - [Replicate::TrainingsCreateRequest](docs/TrainingsCreateRequest.md)
 
 
